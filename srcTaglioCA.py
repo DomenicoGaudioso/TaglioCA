@@ -20,7 +20,7 @@ def calculate_shear_resistance(bw, d, fck, fyw, phi, s, bs, Vsd, theta, alpha):
     dict: Dizionario con i valori di Vrd,max, Vrd,s e il risultato della verifica.
     """
     ns = 100/s #numero di staffe in un metro 
-    Asw = (np.pi*phi**2/4)*ns*bs/10**2
+    Asw = (np.pi*phi**2/4)*ns*bs/10**2 # in cm2
 
     # Conversione angolo theta in radianti
     theta_rad = np.radians(theta) # * 3.14159 / 180
@@ -38,7 +38,7 @@ def calculate_shear_resistance(bw, d, fck, fyw, phi, s, bs, Vsd, theta, alpha):
     # Resistenza media del calcestruzzo (MPa)
     fcd = 0.85*(fck / 1.5)  # Valore di progetto del calcestruzzo
     fyd = fyw/1.15 
-    wsw = ((Asw / s)*fyd)/(bw*(0.5*fcd)) #percentuale di armatura trasversale
+    wsw = ((Asw*10**2 / s)*fyd)/(bw*10*(0.5*fcd)) #percentuale di armatura trasversale
     cot_theta_calc = np.sqrt(1/(wsw*np.sin(alpha_rad)) - 1)
     theta_calc = np.tan(cot_theta_calc)
     
