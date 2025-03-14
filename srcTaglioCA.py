@@ -19,7 +19,7 @@ def calculate_shear_resistance(bw, d, fck, fyw, phi, s, bs, Vsd, theta, alpha):
     Returns:
     dict: Dizionario con i valori di Vrd,max, Vrd,s e il risultato della verifica.
     """
-    ns = 100/s #numero di staffe in un metro 
+    ns = 1/s #numero di staffe
     Asw = (np.pi*phi**2/4)*ns*bs/10**2 # in cm2
 
     # Conversione angolo theta in radianti
